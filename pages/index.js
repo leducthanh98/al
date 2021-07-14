@@ -132,7 +132,7 @@ export default function Home(props) {
 
       <main className="flex flex-col w-full lg:w-3/6">
         <div className="flex flex-col">
-          <span className="text-5xl font-bold mb-3 text-center">Alienworlds Account Monitor <span className="text-md text-blue-400">v2.5</span></span>
+          <span className="text-3xl font-bold mb-1 text-center">Alienworlds Account Monitor <span className="text-md text-blue-400">v2.5</span></span>
         </div>
         <div className="flex flex-col lg:flex-row w-full items-center justify-center rounded-md shadow-lg p-6 mt-10 mb-2 bg-gray-700 gap-x-4 gap-y-5 lg:gap-y-0">
           <div className="flex-1 flex-col">
@@ -142,7 +142,6 @@ export default function Home(props) {
                 <input type="text" className="shadow appearance-none w-4/6 rounded py-2 px-3 bg-gray-300 text-gray-800 font-bold leading-tight focus:outline-none focus:shadow-outline"
                 onChange={(e) => { setInput(e.target.value) }} value={input} />
               </div>
-              <div className="text-xs font-bold mt-0.5 text-red-300 text-center">Adding multiple accounts at once is supported by using space <br /> Ex. abcde.wam efghj.wam 1a2b3.wam</div>
               <div className="mt-5 w-full">
                 <button className="bg-gray-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full"
                 type="submit">
@@ -169,29 +168,15 @@ export default function Home(props) {
       </main>
 
       <div className="flex flex-col rounded-md items-center justify-center p-6 my-3 w-full lg:w-5/6">
-        <div className="text-center py-4 lg:px-4">
-          <div className="p-2 px-4 bg-blue-800 items-center text-blue-100 leading-none lg:rounded-full flex lg:inline-flex" role="alert">
-            <span className="flex rounded-full bg-blue-500 uppercase px-2 py-1 text-xs font-bold mr-3">New 27/5/2021</span>
-            <span className="font-semibold mr-2 text-left flex-auto">Table Layout is now live! Try switch to "Table" below.</span>
-          </div>
-        </div>
         <div className="flex flex-row justify-center items-center">
           <span className="text-xl font-bold mr-3">Select Layout: </span>
           <ul className="flex">
-            <li className="mr-3">
-              <a className={`cursor-pointer inline-block border border-blue-500 rounded hover:border-blue-20
-hover:bg-blue-200 py-1 px-3 font-bold ${layout==='Cards' ? 'bg-blue-500 text-white' : 'text-blue-500'}`}
-              onClick={() => setLayout("Cards")}>Cards</a>
-            </li>
             <li className="mr-3">
               <a className={`cursor-pointer inline-block border border-blue-500 rounded hover:border-blue-20
 hover:bg-blue-200 py-1 px-3 font-bold ${layout==='Table' ? 'bg-blue-500 text-white' : 'text-blue-500'}`}
               onClick={() => setLayout("Table")}>Table</a>
             </li>
           </ul>
-        </div>
-        <div className="flex mt-2 text-center">
-            <span className="text-red-500 font-bold">*Please wait for information to be loaded before changing layout*</span>
         </div>
       </div>
 
