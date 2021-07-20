@@ -457,7 +457,8 @@ export default function AccountRow(props) {
     const lastMineBg = lastMine.last_mine.includes('month') || lastMine.last_mine.includes('day') ? 
     'bg-red-700' : 
     lastMine.last_mine.includes('hour') ? 'bg-yellow-600' : 'bg-blue-600'
-
+    const linkAcc = "https://mining.alienworlds.tools/?account="+acc
+    const linkLand = "https://wax.atomichub.io/explorer/asset/"+ lastMine.currentLand
     return (
         <>
             <tr className={"text-center "+bgRow}>
@@ -468,8 +469,8 @@ export default function AccountRow(props) {
                     </svg>
                 </td>
                 <td className="font-bold">{index+1}</td>
-                <td>{minerName}</td>
-                <td>{acc}</td>
+                
+                <td><a href={linkAcc} target="_blank" rel = "noreferrer">{acc}</a><p>({minerName})</p></td>
                 <td>
                     <div className="overflow-hidden h-5 text-xs flex rounded bg-gray-800 w-full">
                         <div style={{ width: percent+"%" }} className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${barColor}`}>
@@ -477,6 +478,7 @@ export default function AccountRow(props) {
                             {!accInfo.used && <span className="font-bold">Loading...</span>}
                         </div>
                     </div>
+                    <a href={linkLand} target="_blank" rel = "noreferrer">Land: {lastMine.currentLand}</a>
                 </td>
                 <td>{accInfo.cpu_weight}</td>
                 <td>{balance} TLM</td>

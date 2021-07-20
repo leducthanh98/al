@@ -1,25 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  @apply bg-gray-800 text-white
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    @apply bg-gray-800 text-white
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+    --tw-text-opacity: 1;
+    color: rgba(59, 130, 246, var(--tw-text-opacity));
+    font-size: 1rem;
 }
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-th, td {
-  @apply border border-gray-500 text-center p-2;
+th,
+td {
+    @apply border border-gray-500 text-center p-2;
 }

@@ -39,8 +39,8 @@ export default function Home(props) {
     market_price: 0,
     update: "None"
   })
-  const [layout, setLayout] = useState("")
-
+  const layout = "Table"
+  
   const handleAddAcc = (e) => {
     e.preventDefault()
     const account_arr = Array.from(new Set(input.split(" ")))
@@ -94,7 +94,7 @@ export default function Home(props) {
     setInput("")
     setTotalTLM(0)
   }
-
+  
   useEffect(() => {
     //console.log("Account Changed!")
     //console.log(account)
@@ -167,7 +167,7 @@ export default function Home(props) {
         </div>
       </main>
 
-      <div className="flex flex-col rounded-md items-center justify-center p-6 my-3 w-full lg:w-5/6">
+      {/* <div className="flex flex-col rounded-md items-center justify-center p-6 my-3 w-full lg:w-5/6">
         <div className="flex flex-row justify-center items-center">
           <span className="text-xl font-bold mr-3">Select Layout: </span>
           <ul className="flex">
@@ -178,7 +178,7 @@ hover:bg-blue-200 py-1 px-3 font-bold ${layout==='Table' ? 'bg-blue-500 text-whi
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
 
       {layout != 'Cards' && layout != 'Table' && <>
         <div className="flex flex-col items-center">
@@ -194,27 +194,10 @@ hover:bg-blue-200 py-1 px-3 font-bold ${layout==='Table' ? 'bg-blue-500 text-whi
           </div>
         </div>
       </>}
-      {layout === 'Cards' && <>
-        <TotalBalanceCard totalTLM={totalTLM} totalWax={totalWax} totalStaked={totalStaked}
-        TLMPrice={TLMPrice} WAXPrice={WAXPrice} />
-        <div className="flex flex-col rounded-md items-center justify-center p-6 my-3 w-full lg:w-5/6 bg-gray-700">
-          <span className="text-lg font-bold text-center my-1 text-indigo-300">Data will automatically refresh every 120 secs</span>
-          <span className="text-lg font-bold text-center my-1 text-indigo-300">Click at trash icon to delete account</span>
-          <AccountCard accounts={account}
-          onDelete={handleDeleteAcc}
-          onTotalTLMChange={(newTotal) => { setTotalTLM(newTotal) }}
-          onTotalWaxChange={(newTotal) => { setTotalWax(newTotal) }}
-          onTotalStakedChange={(newTotal) => { setTotalStaked(newTotal) }}
-          />
-        </div>
-      </>}
       {layout === 'Table' && <>
         <TotalBalanceCard totalTLM={totalTLM} totalWax={totalWax} totalStaked={totalStaked}
           TLMPrice={TLMPrice} WAXPrice={WAXPrice} />
         <div className="flex flex-col rounded-md items-center justify-center p-6 my-3 w-full lg:w-5/6 bg-gray-700">
-          <span className="text-lg font-bold text-center my-1 text-indigo-300">Data will automatically refresh every 120 secs</span>
-          <span className="text-lg font-bold text-center my-1 text-indigo-300">Click at trash icon to delete account</span>
-          <span className="visible xl:invisible">If you're using mobile, you may need to scroll along the table.</span>
           <AccountTable accounts={account}
           onDelete={handleDeleteAcc}
           onTotalTLMChange={(newTotal) => { setTotalTLM(newTotal) }}

@@ -101,7 +101,6 @@ export default function AccountTable(props) {
                     <tr className="bg-gray-800">
                         <th className="w-min">Remove</th>
                         <th>#</th>
-                        <th>Miner</th>
                         <th>Wallet</th>
                         <th className="w-4/12">CPU</th>
                         <th>Stake</th>
