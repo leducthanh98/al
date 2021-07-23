@@ -41,6 +41,7 @@ export default function AccountRow(props) {
     const [loading, setLoading] = useState(true)
     const [accInfo, setAccInfo] = useState({})
     const [balance, setBalance] = useState("Loading")
+    const [commission, setCommission] = useState("Loading")
     const [wax, setWax] = useState("Loading")
     const isInitialTx = useRef(true)
     const [update, setUpdate] = useState("None")
@@ -259,10 +260,35 @@ export default function AccountRow(props) {
                 last_mine_tx: result.rows[0].last_mine_tx,
                 currentLand: result.rows[0].current_land
             }
+            getCommission(result.rows[0].current_land)
             setLastMine(newLastMine)
         }
     }
     
+    const getCommission = async (land_id) => {
+        console.log("id land là: "+ land_id)
+        let result = null
+        if(!result) {
+            await axios.get(`https://wax.api.atomicassets.io/atomicassets/v1/assets/${land_id}`)
+            .then((resp) => {
+                if(resp && resp.data) {
+                    result = resp.data
+                }
+            })
+            .catch((err) => {
+                if(err.response) {
+                    console.log(err.response)
+                } else {
+                    console.log(err.message)
+                }
+            })
+        }
+        if(result && result.data) {
+            let newcommission = result.data.data.commission / 100
+            setCommission(newcommission)
+        }
+    }
+
     const fetchLastMineTx = async (tx) => {
         let api_index = getRandom(0, tx_api.length)
         let tries = 0
@@ -454,7 +480,7 @@ export default function AccountRow(props) {
     const percent = accInfo.used ? rawPercent > 100 ? 100 : rawPercent : 0
     const barColor = percent >= 80 ? "bg-red-600" : percent >= 50 ? "bg-yellow-600" : "bg-blue-600"
     const bgRow = index%2!=0 ? "bg-gray-600" : ""
-    const lastMineBg = lastMine.last_mine.includes('tháng') || lastMine.last_mine.includes('ngày') ? 
+    const lastMineBg = lastMine.last_mine.includes('tháng') || lastMine.last_mine.includes('ngày')  ? 
     'bg-red-700' : 
     lastMine.last_mine.includes('giờ') ? 'bg-yellow-600' : 'bg-blue-600'
     const linkAcc = "https://mining.alienworlds.tools/?account="+acc
@@ -478,7 +504,7 @@ export default function AccountRow(props) {
                             {!accInfo.used && <span className="font-bold">Loading...</span>}
                         </div>
                     </div>
-                    <a href={linkLand} target="_blank" rel = "noreferrer">Land: {lastMine.currentLand}</a>
+                    <a href={linkLand} target="_blank" rel = "noreferrer">Land: {lastMine.currentLand} - {commission} %</a>
                 </td>
                 <td>{accInfo.cpu_weight}</td>
                 <td>{balance} TLM</td>
