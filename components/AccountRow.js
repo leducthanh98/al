@@ -454,9 +454,9 @@ export default function AccountRow(props) {
     const percent = accInfo.used ? rawPercent > 100 ? 100 : rawPercent : 0
     const barColor = percent >= 80 ? "bg-red-600" : percent >= 50 ? "bg-yellow-600" : "bg-blue-600"
     const bgRow = index%2!=0 ? "bg-gray-600" : ""
-    const lastMineBg = lastMine.last_mine.includes('month') || lastMine.last_mine.includes('day') ? 
+    const lastMineBg = lastMine.last_mine.includes('tháng') || lastMine.last_mine.includes('ngày') ? 
     'bg-red-700' : 
-    lastMine.last_mine.includes('hour') ? 'bg-yellow-600' : 'bg-blue-600'
+    lastMine.last_mine.includes('giờ') ? 'bg-yellow-600' : 'bg-blue-600'
     const linkAcc = "https://mining.alienworlds.tools/?account="+acc
     const linkLand = "https://wax.atomichub.io/explorer/asset/"+ lastMine.currentLand
     return (
