@@ -1,12 +1,11 @@
 {
     "name": "wax_dashboard",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": true,
     "scripts": {
         "dev": "next dev",
         "build": "next build",
-        "start": "next start -p $PORT",
-        "heroku-postbuild": "npm run build"
+        "start": "next start -p 80"
     },
     "dependencies": {
         "atob": "^2.1.2",
