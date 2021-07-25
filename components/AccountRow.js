@@ -42,6 +42,7 @@ export default function AccountRow(props) {
     const [accInfo, setAccInfo] = useState({})
     const [balance, setBalance] = useState("Loading")
     const [commission, setCommission] = useState("Loading")
+    const [delayLand, setdelayLand] = useState("Loading")
     const [wax, setWax] = useState("Loading")
     const isInitialTx = useRef(true)
     const [update, setUpdate] = useState("None")
@@ -284,8 +285,11 @@ export default function AccountRow(props) {
             })
         }
         if(result && result.data) {
+            console.log(result)
             let newcommission = result.data.data.commission / 100
+            let newdelayLand = result.data.data.delay / 10
             setCommission(newcommission)
+            setdelayLand(newdelayLand)
         }
     }
 
@@ -504,7 +508,7 @@ export default function AccountRow(props) {
                             {!accInfo.used && <span className="font-bold">Loading...</span>}
                         </div>
                     </div>
-                    <a href={linkLand} target="_blank" rel = "noreferrer">Land: {lastMine.currentLand} - {commission} %</a>
+                    <a href={linkLand} target="_blank" rel = "noreferrer">Land: {lastMine.currentLand} - {commission} % - {delayLand}</a>
                 </td>
                 <td>{accInfo.cpu_weight}</td>
                 <td>{balance} TLM</td>
