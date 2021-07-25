@@ -488,6 +488,7 @@ export default function AccountRow(props) {
     'bg-red-700' : 
     lastMine.last_mine.includes('giờ') ? 'bg-yellow-600' : 'bg-blue-600'
     const linkAcc = "https://mining.alienworlds.tools/?account="+acc
+    const linkAccIo = "https://wax.bloks.io/account/"+acc
     const linkLand = "https://wax.atomichub.io/explorer/asset/"+ lastMine.currentLand
     return (
         <>
@@ -500,7 +501,7 @@ export default function AccountRow(props) {
                 </td>
                 <td className="font-bold">{index+1}</td>
                 
-                <td><a href={linkAcc} target="_blank" rel = "noreferrer">{acc}</a><p>({minerName})</p></td>
+                <td><a href={linkAcc} target="_blank" rel = "noreferrer">{acc}</a><p><a href={linkAccIo} target="_blank" rel = "noreferrer">({minerName})</a></p></td>
                 <td>
                     <div className="overflow-hidden h-5 text-xs flex rounded bg-gray-800 w-full">
                         <div style={{ width: percent+"%" }} className={`shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center ${barColor}`}>
@@ -508,7 +509,7 @@ export default function AccountRow(props) {
                             {!accInfo.used && <span className="font-bold">Loading...</span>}
                         </div>
                     </div>
-                    <a href={linkLand} target="_blank" rel = "noreferrer">Land: {lastMine.currentLand} - {commission} % - {delayLand}</a>
+                    <a href={linkLand} target="_blank" rel = "noreferrer">Land: {lastMine.currentLand} - {commission} % - x{delayLand}</a>
                 </td>
                 <td>{accInfo.cpu_weight}</td>
                 <td>{balance} TLM</td>
