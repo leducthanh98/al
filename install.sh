@@ -25,6 +25,21 @@ install_3proxy() {
     cd $WORKDIR
 }
 
+gen_3proxy() {
+    cat <<EOF
+daemon
+maxconn 1000
+nscache 65536
+timeouts 1 5 30 60 180 1800 15 60
+setgid 65535
+setuid 65535
+flush
+allow *
+
+proxy -6 -n -p3128 -i${IP6}
+proxy -n -a -p3128
+flush
+EOF
 }
 
 gen_proxy_file_for_user() {
